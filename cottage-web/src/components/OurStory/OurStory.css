@@ -1,0 +1,120 @@
+#ourstory {
+  background: var(--espresso);
+}
+
+.story-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.story-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+
+.story-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 6px;
+  filter: brightness(0.92) saturate(1.1);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+}
+
+.story-text-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+.story-para {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(249,244,236,0.8);
+}
+
+.story-pull-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--parchment);
+  border-left: 3px solid var(--gold);
+  padding-left: 20px;
+  margin-top: 12px;
+}
+
+.chef-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: var(--walnut);
+  border: 1px solid rgba(201,147,58,0.15);
+  border-radius: 6px;
+  padding: 28px 32px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.chef-portrait {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  border: 2px solid var(--gold);
+  flex-shrink: 0;
+}
+
+.chef-info {
+  flex: 1;
+}
+
+.chef-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.chef-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--parchment);
+  margin-bottom: 4px;
+}
+
+.chef-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.chef-bio {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--bronze);
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .story-columns {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .chef-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}

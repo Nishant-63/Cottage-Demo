@@ -1,0 +1,206 @@
+/* ─── FULL MENU ─── */
+/* overflow must NOT be hidden/auto — that would break CSS sticky on children */
+#fullmenu { background: var(--walnut); overflow: visible; }
+
+/* ── CSS sticky wrapper — the ONLY reliable way to do sticky ── */
+/*    It sticks exactly when it hits the navbar bottom (72px),    */
+/*    and naturally unsticks when scrolling back up. No JS needed. */
+.menu-tabs-sticky-wrapper {
+  position: sticky;
+  top: 72px;           /* sits flush below the fixed main navbar */
+  z-index: 200;
+  background: var(--walnut);
+  border-bottom: 1px solid rgba(201,147,58,0.3);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 1px 0 rgba(201,147,58,0.15);
+}
+
+/* ── Tab bar itself — lays out the buttons ── */
+.menu-tabs {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: relative;   /* needed for the absolute underline indicator */
+  margin-bottom: 0;     /* spacing handled by panel padding-top */
+}
+.menu-tabs::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--bronze);
+  background: none;
+  border: none;
+  padding: 14px 24px;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: color var(--transition);
+}
+
+.tab-btn::after { display: none !important; }
+
+.tab-btn.active { color: var(--parchment); }
+.tab-btn:hover { color: var(--parchment); }
+
+.tab-underline-indicator {
+  position: absolute;
+  bottom: -1px;
+  height: 2px;
+  background: var(--gold);
+  transition: transform 280ms cubic-bezier(0.4,0,0.2,1),
+              width 280ms cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
+  border-radius: 1px;
+  left: 0;
+  width: 0;
+}
+
+.tab-panel {
+  display: none;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8px 24px 48px;
+  animation: tabFadeIn 400ms ease forwards;
+}
+.tab-panel.active { display: block; }
+
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.menu-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 32px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(201,147,58,0.15);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-bottom: 0;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  gap: 12px;
+}
+
+/* ─── EYE BUTTON ─── */
+.dish-eye-btn {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition),
+              transform 280ms ease, box-shadow 280ms ease;
+  padding: 0;
+}
+.dish-eye-btn:hover {
+  background: var(--gold);
+  color: var(--espresso);
+  transform: rotate(15deg) scale(1.15);
+  box-shadow: 0 0 12px 3px rgba(201,147,58,0.45);
+}
+
+.menu-item-left { flex: 1; }
+
+.menu-item-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--parchment);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.menu-item-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--bronze);
+  line-height: 1.5;
+}
+
+.menu-item-price {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.badge-new {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.badge-v {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #4CAF50;
+  border: 1.5px solid #4CAF50;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.menu-footer-note {
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--bronze);
+  font-style: italic;
+}
+
+/* Split heading animation */
+.split-heading-wrap {
+  overflow: hidden;
+  display: inline-block;
+}
+.split-heading-inner {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .menu-grid { grid-template-columns: 1fr; }
+  .tab-panel { padding: 0 16px; }
+}

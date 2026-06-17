@@ -1,0 +1,50 @@
+.photo-strip {
+  padding: 2rem 0;
+  background: var(--bg-1, #faf7f3);
+}
+
+.photo-strip-inner {
+  overflow: hidden;
+  width: 100%;
+}
+
+.strip-track {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  /* duplicated content allows moving -50% for seamless loop */
+  animation: stripScroll 30s linear infinite;
+}
+
+.strip-photo {
+  flex: 0 0 auto;
+  width: 280px;
+  height: 180px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.strip-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-strip:hover .strip-track {
+  animation-play-state: paused;
+}
+
+@keyframes stripScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 720px) {
+  .strip-photo { width: 200px; height: 140px; }
+}
+/* PhotoStrip placeholder CSS */
+#photostrip { overflow:hidden; }
+.photo-strip-track { display:flex; gap:12px; overflow-x:scroll; scroll-behavior:auto; }
+.strip-photo img { width:320px; height:200px; object-fit:cover; display:block; }
