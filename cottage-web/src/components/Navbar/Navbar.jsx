@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <nav id="navbar" className={scrolled ? 'scrolled' : ''} role="navigation" aria-label="Main navigation">
-      <a href="#hero" className="nav-logo">COTTAGE</a>
+      <a href="#hero" className="nav-logo">RESTAURANT</a>
 
       <ul className="nav-links">
         <li><a href="#signature">Menu</a></li>

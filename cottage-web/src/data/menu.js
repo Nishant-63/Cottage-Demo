@@ -1,4 +1,4 @@
-// ─── COMPLETE COTTAGE MENU DATA ───────────────────────────────────────────────
+// ─── COMPLETE RESTAURANT MENU DATA ───────────────────────────────────────────────
 // Extracted 1:1 from index.html
 
 export const MENU = {
@@ -21,9 +21,9 @@ export const MENU = {
     {
       section: 'Appetizers',
       items: [
-        { name: 'Cottage Cheese Filo Parcels', desc: 'Spicy cottage cheese, broccoli & sundried tomato in filo pastry', price: '₹645', veg: true },
+        { name: 'Restaurant Cheese Filo Parcels', desc: 'Spicy restaurant cheese, broccoli & sundried tomato in filo pastry', price: '₹645', veg: true },
         { name: 'Potato Soufflé', desc: 'Oven baked, served with basil pesto sauce', price: '₹685', veg: true },
-        { name: 'Harissa Spiced Cottage Cheese', desc: 'Clay oven roasted cottage cheese, creamy tomato sauce', price: '₹645', veg: true },
+        { name: 'Harissa Spiced Restaurant Cheese', desc: 'Clay oven roasted restaurant cheese, creamy tomato sauce', price: '₹645', veg: true },
         { name: 'Empanadas Veg', desc: 'Flaky pastry stuffed with exotic vegetables & cheese', price: '₹585', veg: true },
         { name: 'Stuffed Jalapeño & Cheese Ovoid', desc: 'Cheese & jalapeño balls with curry hummus', price: '₹625', veg: true },
         { name: 'Smoked Chicken', desc: 'Greek chicken from clay oven, tzatziki & salad', price: '₹825', isNew: true },
@@ -67,7 +67,7 @@ export const MENU = {
         { name: 'Avocado Toast', desc: 'Ciabatta, mashed avocado, lemon, onion, coriander & jalapeño', price: '₹625', veg: true },
         { name: 'Veggie Burger', desc: 'Green vegetable patty, house sauce', price: '₹545', veg: true },
         { name: 'Grilled Chicken Burger', desc: 'Minced chicken patty, mustard mayonnaise', price: '₹625' },
-        { name: 'Cottage Cheese Pepper Sandwich', desc: 'Clay oven cottage cheese, bell peppers & chimichurri', price: '₹625', veg: true, isNew: true },
+        { name: 'Restaurant Cheese Pepper Sandwich', desc: 'Clay oven restaurant cheese, bell peppers & chimichurri', price: '₹625', veg: true, isNew: true },
         { name: 'Grilled Chicken Sandwich', desc: 'Grilled chicken breast, pesto sauce', price: '₹625' },
         { name: 'BBQ Chicken Sandwich', desc: 'Chicken breast, BBQ sauce', price: '₹625' },
       ],
@@ -80,7 +80,7 @@ export const MENU = {
         { name: 'Mexican', desc: 'Bell pepper, corn, onion & red paprika', price: '₹685', veg: true, isNew: true },
         { name: 'The Greek', desc: 'Olives, bell pepper, artichoke, sundried tomato, feta mousse', price: '₹745', veg: true },
         { name: 'Mushroom, Jalapeño & Onion', desc: '', price: '₹745', veg: true },
-        { name: 'Cottage Cheese Peri Peri', desc: 'Bell pepper, cottage cheese, red paprika & onions', price: '₹785', veg: true, isNew: true },
+        { name: 'Restaurant Cheese Peri Peri', desc: 'Bell pepper, restaurant cheese, red paprika & onions', price: '₹785', veg: true, isNew: true },
         { name: 'Charmoule Chicken & Jalapeño', desc: 'Marinated chicken & jalapeño', price: '₹825' },
         { name: 'Smoked Chicken', desc: 'Smoked chicken & mushroom', price: '₹825' },
         { name: 'Basil Chicken & Rocket', desc: 'Pesto chicken & rocket', price: '₹825' },
@@ -112,11 +112,11 @@ export const MENU = {
     {
       section: 'Vegetarian Mains',
       items: [
-        { name: 'Cottage Cheese Pin Wheel', desc: 'Cottage cheese rolls with pesto, almond tomato cream gravy', price: '₹645', veg: true },
+        { name: 'Restaurant Cheese Pin Wheel', desc: 'Restaurant cheese rolls with pesto, almond tomato cream gravy', price: '₹645', veg: true },
         { name: 'Mushroom Pepper Fry', desc: '', price: '₹645', veg: true },
         { name: 'Mushroom Stroganoff', desc: 'Mushrooms in stock & sour cream, served with rice', price: '₹645', veg: true },
         { name: 'Pesto Grilled Vegetables', desc: 'Exotic vegetables with couscous & curry sauce', price: '₹685', veg: true },
-        { name: 'Chermoule Cottage Cheese', desc: 'Chermoule spiced cottage cheese, mashed potato, roasted vegetables & curry thyme sauce', price: '₹685', veg: true, isNew: true },
+        { name: 'Chermoule Restaurant Cheese', desc: 'Chermoule spiced restaurant cheese, mashed potato, roasted vegetables & curry thyme sauce', price: '₹685', veg: true, isNew: true },
         { name: 'Pesto Broccoli Mushroom', desc: 'Broccoli & mushroom in creamy pesto, couscous & tzatziki', price: '₹685', veg: true, isNew: true },
         { name: 'Exotic Vegetable Pot Pie', desc: 'Clay oven vegetables in tomato cream sauce, couscous', price: '₹625', veg: true },
       ],

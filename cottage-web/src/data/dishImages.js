@@ -52,7 +52,7 @@ const DISH_IMAGES = {
   'pear':                      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&q=80',
   'garlic prawn spaghetti':    'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=700&q=80',
   'siesta sipper':             'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=700&q=80',
-  'cottage cheese filo':       'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=700&q=80',
+  'restaurant cheese filo':       'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=700&q=80',
   'sesame falafel':            'https://images.unsplash.com/photo-1593001874117-c99c800e3eb7?w=700&q=80',
   'mushroom risotto':          'https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=700&q=80',
   'broccoli risotto':          'https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=700&q=80',

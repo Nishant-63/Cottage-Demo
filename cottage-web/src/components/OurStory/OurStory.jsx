@@ -17,14 +17,14 @@ export default function OurStory() {
             <img
               className="story-img"
               src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80"
-              alt="Chef at work in the Cottage kitchen"
+              alt="Chef at work in the Restaurant kitchen"
               loading="lazy"
             />
           </div>
 
           <div className="story-text-col reveal" style={{ transitionDelay: '0.15s' }}>
             <p className="story-para">
-              Cottage began with a single, stubborn conviction: that Chandigarh deserved a restaurant built on genuine culinary soul — not a theme, not a franchise, but a place where every dish carries a point of view.
+              Restaurant began with a single, stubborn conviction: that Chandigarh deserved a restaurant built on genuine culinary soul — not a theme, not a franchise, but a place where every dish carries a point of view.
             </p>
             <p className="story-para">
               At the heart of our kitchen is the clay oven — a craft tool as old as the Mediterranean itself. It is not a gimmick. It is the reason our chicken tastes the way it does, why our flatbreads have that char and softness that is almost impossible to achieve any other way. We built this restaurant around it.
@@ -53,7 +53,7 @@ export default function OurStory() {
             <div className="chef-name">Chef Marco Fernandes</div>
             <div className="chef-title">Head Chef &amp; Co-Founder</div>
             <p className="chef-bio">
-              Trained across kitchens in Lisbon, Beirut, and Barcelona, Marco brings over 15 years of Mediterranean cooking to every plate at Cottage. His philosophy is simple: use the finest, freshest ingredients, and get out of their way.
+              Trained across kitchens in Lisbon, Beirut, and Barcelona, Marco brings over 15 years of Mediterranean cooking to every plate at Restaurant. His philosophy is simple: use the finest, freshest ingredients, and get out of their way.
             </p>
           </div>
         </div>

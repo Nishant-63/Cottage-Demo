@@ -34,7 +34,7 @@ export default function SignatureDishes() {
         </h2>
         <div id="sig-divider" className="gold-divider"></div>
         <p className="section-sub" style={{ marginTop: 16 }}>
-          Eight dishes that tell the Cottage story.
+          Eight dishes that tell the Restaurant story.
         </p>
       </div>
 
