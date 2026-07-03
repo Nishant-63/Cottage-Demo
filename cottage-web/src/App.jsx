@@ -9,6 +9,7 @@ import Videos from './components/Videos/Videos'
 import Reservation from './components/Reservation/Reservation'
 import Footer from './components/Footer/Footer'
 import Toast from './components/Toast/Toast'
+import Model3DButton from './components/Model3DButton/Model3DButton'
 import { useState } from 'react'
 import { useScrollReveal } from './hooks/useScrollReveal'
 
@@ -35,6 +36,7 @@ export default function App() {
       </main>
       <Footer />
       <Toast visible={toast} />
+      <Model3DButton />
     </>
   )
 }
