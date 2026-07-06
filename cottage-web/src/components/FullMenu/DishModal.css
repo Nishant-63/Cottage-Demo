@@ -107,6 +107,17 @@
   border-radius: 20px;
 }
 
+.dish-modal-add-cart {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px 24px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .dish-modal-card,
   .dish-modal-card.closing {

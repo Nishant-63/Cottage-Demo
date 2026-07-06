@@ -123,6 +123,22 @@
   color: var(--espresso);
 }
 
+.dish-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.dish-add-cart-btn {
+  flex: 1;
+  padding: 9px 14px;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+
 .dishes-cta {
   text-align: center;
   margin-top: 48px;

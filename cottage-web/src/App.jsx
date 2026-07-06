@@ -10,33 +10,67 @@ import Reservation from './components/Reservation/Reservation'
 import Footer from './components/Footer/Footer'
 import Toast from './components/Toast/Toast'
 import Model3DButton from './components/Model3DButton/Model3DButton'
+import CartPage from './components/Cart/CartPage'
+import OrderConfirmation from './components/Cart/OrderConfirmation'
 import { useState } from 'react'
 import { useScrollReveal } from './hooks/useScrollReveal'
 
 export default function App() {
-  const [toast, setToast] = useState(false)
+  const [view, setView] = useState('menu')  // 'menu' | 'cart' | 'confirmation'
+  const [toast, setToast] = useState({ visible: false, message: '' })
+  const [lastOrder, setLastOrder] = useState(null)
   useScrollReveal()
-  const showToast = () => {
-    setToast(true)
-    setTimeout(() => setToast(false), 4000)
+
+  const showToast = (message = 'Reservation confirmed — we look forward to seeing you!') => {
+    setToast({ visible: true, message })
+    setTimeout(() => setToast(t => ({ ...t, visible: false })), 4000)
+  }
+
+  const handleOrderPlaced = (order) => {
+    setLastOrder(order)
+    setView('confirmation')
+  }
+
+  if (view === 'cart') {
+    return (
+      <>
+        <Navbar onCartClick={() => setView('cart')} />
+        <CartPage
+          onBack={() => setView('menu')}
+          onOrderPlaced={handleOrderPlaced}
+          showToast={showToast}
+        />
+        <Toast visible={toast.visible} message={toast.message} />
+      </>
+    )
+  }
+
+  if (view === 'confirmation') {
+    return (
+      <>
+        <Navbar onCartClick={() => setView('cart')} />
+        <OrderConfirmation order={lastOrder} onDone={() => setView('menu')} />
+      </>
+    )
   }
 
   return (
     <>
-      <Navbar />
+      <Navbar onCartClick={() => setView('cart')} />
       <main>
         <Hero />
         <Features />
         <OurStory />
-        <SignatureDishes />
-        <FullMenu />
+        <SignatureDishes showToast={showToast} />
+        <FullMenu showToast={showToast} />
         <PhotoStrip />
         <Videos />
-        <Reservation onSubmit={showToast} />
+        <Reservation onSubmit={() => showToast()} />
       </main>
       <Footer />
-      <Toast visible={toast} />
+      <Toast visible={toast.visible} message={toast.message} />
       <Model3DButton />
     </>
   )
 }
+

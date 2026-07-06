@@ -1,0 +1,372 @@
+/* ─── CART PAGE ─── */
+#cart-page {
+  min-height: 100vh;
+  background: var(--espresso);
+  padding-top: 72px; /* below fixed navbar */
+}
+
+.cart-page-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* ─── BACK BUTTON ─── */
+.cart-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: var(--bronze);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 36px;
+  transition: color var(--transition);
+}
+.cart-back-btn:hover { color: var(--gold); }
+
+/* ─── SECTION HEADER ─── */
+.cart-section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* ─── EMPTY STATE ─── */
+.cart-empty {
+  text-align: center;
+  padding: 64px 24px;
+}
+.cart-empty-icon {
+  font-size: 56px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+.cart-empty-msg {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--parchment);
+  margin-bottom: 8px;
+}
+.cart-empty-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--bronze);
+}
+
+/* ─── LAYOUT ─── */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ─── ITEM LIST ─── */
+.cart-items-section {
+  background: var(--walnut);
+  border: 1px solid rgba(201,147,58,0.15);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cart-items-list {
+  padding: 0 24px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.cart-item:last-child { border-bottom: none; }
+
+.cart-item-thumb {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 1px solid rgba(201,147,58,0.15);
+}
+
+.cart-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-item-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  color: var(--parchment);
+  line-height: 1.3;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-item-unit {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--bronze);
+}
+
+/* ─── QTY STEPPER ─── */
+.cart-item-qty-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid rgba(201,147,58,0.3);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+  line-height: 1;
+}
+.qty-btn:hover { background: rgba(201,147,58,0.12); }
+
+.qty-value {
+  min-width: 28px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--parchment);
+  border-left: 1px solid rgba(201,147,58,0.2);
+  border-right: 1px solid rgba(201,147,58,0.2);
+  padding: 0 4px;
+  line-height: 30px;
+}
+
+/* ─── LINE TOTAL ─── */
+.cart-item-line-total {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+  min-width: 56px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ─── REMOVE ─── */
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: rgba(139,106,62,0.6);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 2px;
+  transition: color var(--transition), background var(--transition);
+  flex-shrink: 0;
+}
+.cart-item-remove:hover {
+  color: #c62828;
+  background: rgba(198,40,40,0.1);
+}
+
+/* ─── TOTALS ─── */
+.cart-totals {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(201,147,58,0.15);
+}
+
+.cart-totals-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--parchment);
+  margin-bottom: 6px;
+}
+
+.cart-tax-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--bronze);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.cart-total-final {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+  padding-top: 10px;
+  border-top: 1px solid rgba(201,147,58,0.2);
+  margin-bottom: 0;
+}
+
+/* ─── ORDER FORM ─── */
+.cart-order-form {
+  background: var(--walnut);
+  border: 1px solid rgba(201,147,58,0.15);
+  border-radius: 6px;
+  padding: 32px 28px;
+  position: sticky;
+  top: 88px;
+}
+
+.cart-form-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--parchment);
+  margin-bottom: 24px;
+}
+
+.cart-required {
+  color: var(--gold);
+  font-size: 12px;
+}
+
+.cart-optional {
+  color: var(--bronze);
+  font-size: 10px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-style: italic;
+}
+
+/* Reuse Reservation's form-group styles — they live in Reservation.css
+   but since those classes are global they apply here too. 
+   We just add form-group spacing tweak for cart context. */
+.cart-order-form .form-group {
+  margin-bottom: 16px;
+}
+
+/* Self-contained form-group styles matching Reservation.css exactly
+   (needed since Reservation component is not mounted in cart view) */
+.cart-order-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.cart-order-form .form-group label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+
+.cart-order-form .form-group input {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--cream);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 2px;
+  padding: 12px 16px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  width: 100%;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.cart-order-form .form-group input::placeholder {
+  color: rgba(139,106,62,0.6);
+}
+
+.cart-order-form .form-group input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,147,58,0.15);
+}
+
+
+.cart-place-order-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 16px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.cart-place-order-btn:disabled,
+.cart-place-order-btn[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.cart-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--bronze);
+  text-align: center;
+  margin-top: 16px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .cart-page-inner {
+    padding: 32px 16px 64px;
+  }
+
+  .cart-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .cart-order-form {
+    position: static;
+    padding: 24px 20px;
+  }
+
+  .cart-item-thumb {
+    width: 52px;
+    height: 52px;
+  }
+
+  .cart-item-name {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-item {
+    gap: 10px;
+  }
+
+  .cart-item-thumb {
+    width: 44px;
+    height: 44px;
+  }
+
+  .cart-item-line-total {
+    min-width: 44px;
+  }
+
+  .qty-btn { width: 26px; height: 26px; font-size: 16px; }
+  .qty-value { min-width: 22px; line-height: 26px; font-size: 13px; }
+}

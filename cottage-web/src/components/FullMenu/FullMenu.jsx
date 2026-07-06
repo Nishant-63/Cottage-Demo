@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import './FullMenu.css'
 import MenuTab from './MenuTab'
 import MenuPanel from './MenuPanel'
@@ -6,10 +6,12 @@ import MenuItem from './MenuItem'
 import DishModal from './DishModal'
 import { MENU } from '../../data/menu'
 import { getDishImage, getDishBadge } from '../../data/dishImages'
+import { useCart } from '../../context/CartContext'
 
-export default function FullMenu() {
+export default function FullMenu({ showToast }) {
   const [active, setActive] = useState('appetizers')
   const [modalDish, setModalDish] = useState(null)
+  const { dispatch } = useCart()
 
   function openModal(item, sectionTitle, tabKey) {
     const imgUrl = getDishImage(item.name, sectionTitle, tabKey)
@@ -18,10 +20,27 @@ export default function FullMenu() {
       name:       item.name,
       desc:       item.desc || '',
       price:      item.price,
+      rawPrice:   item.rawPrice ?? parseFloat(String(item.price).replace(/[^\d.]/g, '')) || 0,
       imgUrl,
       badgeLabel: badge.label,
       badgeStyle: badge.style,
     })
+  }
+
+  function addToCart(item, sectionTitle, tabKey) {
+    const imgUrl = getDishImage(item.name, sectionTitle, tabKey)
+    const rawPrice = parseFloat(String(item.price).replace(/[^\d.]/g, '')) || 0
+    dispatch({
+      type: 'ADD_ITEM',
+      payload: {
+        id: `${item.name}-${item.price}`,
+        name: item.name,
+        price: rawPrice,
+        qty: 1,
+        imgUrl,
+      },
+    })
+    showToast?.(`Added "${item.name}" to your cart`)
   }
 
   return (
@@ -50,17 +69,22 @@ export default function FullMenu() {
               <div key={si}>
                 <div className="menu-section-title">{sec.section}</div>
                 <div className="menu-grid">
-                  {sec.items.map((item, ii) => (
-                    <MenuItem
-                      key={ii}
-                      name={item.name}
-                      desc={item.desc}
-                      price={item.price}
-                      veg={item.veg}
-                      isNew={item.isNew}
-                      onEyeClick={() => openModal(item, sec.section, tabKey)}
-                    />
-                  ))}
+                  {sec.items.map((item, ii) => {
+                    const imgUrl = getDishImage(item.name, sec.section, tabKey)
+                    return (
+                      <MenuItem
+                        key={ii}
+                        name={item.name}
+                        desc={item.desc}
+                        price={item.price}
+                        veg={item.veg}
+                        isNew={item.isNew}
+                        imgUrl={imgUrl}
+                        onEyeClick={() => openModal(item, sec.section, tabKey)}
+                        onAddToCart={() => addToCart(item, sec.section, tabKey)}
+                      />
+                    )
+                  })}
                 </div>
               </div>
             ))}
@@ -69,7 +93,26 @@ export default function FullMenu() {
         ))}
       </section>
 
-      <DishModal dish={modalDish} onClose={() => setModalDish(null)} />
+      <DishModal
+        dish={modalDish}
+        onClose={() => setModalDish(null)}
+        onAddToCart={() => {
+          if (modalDish) {
+            dispatch({
+              type: 'ADD_ITEM',
+              payload: {
+                id: `${modalDish.name}-${modalDish.price}`,
+                name: modalDish.name,
+                price: modalDish.rawPrice,
+                qty: 1,
+                imgUrl: modalDish.imgUrl,
+              },
+            })
+            showToast?.(`Added "${modalDish.name}" to your cart`)
+          }
+        }}
+      />
     </>
   )
 }
+

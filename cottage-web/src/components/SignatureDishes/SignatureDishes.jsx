@@ -3,13 +3,15 @@ import './SignatureDishes.css'
 import { dishes } from '../../data/dishes'
 import DishCard from './DishCard'
 import DishPhotoModal from './DishPhotoModal'
+import { useCart } from '../../context/CartContext'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default function SignatureDishes() {
+export default function SignatureDishes({ showToast }) {
   const [modalDish, setModalDish] = useState(null)
+  const { dispatch } = useCart()
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -22,6 +24,20 @@ export default function SignatureDishes() {
 
     return () => ScrollTrigger.getAll().forEach(t => t.kill())
   }, [])
+
+  function addToCart(dish) {
+    dispatch({
+      type: 'ADD_ITEM',
+      payload: {
+        id: `${dish.name}-${dish.price}`,
+        name: dish.name,
+        price: dish.price,
+        qty: 1,
+        imgUrl: dish.img,
+      },
+    })
+    showToast?.(`Added "${dish.name}" to your cart`)
+  }
 
   return (
     <section id="signature" aria-labelledby="sig-heading">
@@ -44,6 +60,7 @@ export default function SignatureDishes() {
             key={dish.id}
             dish={dish}
             onView={() => setModalDish(dish)}
+            onAddToCart={() => addToCart(dish)}
             style={{ transitionDelay: `${index * 0.05}s` }}
           />
         ))}
@@ -59,3 +76,4 @@ export default function SignatureDishes() {
     </section>
   )
 }
+

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import './DishModal.css'
 
-export default function DishModal({ dish, onClose }) {
+export default function DishModal({ dish, onClose, onAddToCart }) {
   const cardRef = useRef(null)
 
   // close on Escape
@@ -57,8 +57,15 @@ export default function DishModal({ dish, onClose }) {
             className="dish-modal-badge"
             style={dish.badgeStyle}
           >{dish.badgeLabel}</span>
+          <button
+            className="btn-primary dish-modal-add-cart"
+            onClick={() => { onAddToCart?.(); handleClose() }}
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
   )
 }
+

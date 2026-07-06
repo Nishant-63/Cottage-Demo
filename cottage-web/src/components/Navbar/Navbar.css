@@ -140,3 +140,88 @@
     display: flex;
   }
 }
+
+/* ─── CART BUTTON (desktop) ─── */
+.nav-cart-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201,147,58,0.5);
+  background: transparent;
+  color: var(--parchment);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition), color var(--transition);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.nav-cart-btn:hover {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+  color: var(--gold);
+}
+
+.nav-cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--espresso);
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ─── MOBILE NAV RIGHT (cart + hamburger) ─── */
+.nav-right-mobile {
+  display: none;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .nav-right-mobile {
+    display: flex;
+  }
+}
+
+/* ─── CART BUTTON inside mobile menu ─── */
+.mobile-menu-cart-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--gold);
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: color var(--transition);
+}
+
+.mobile-menu-cart-btn:hover { color: var(--gold-light); }
+
+.mobile-menu-cart-btn .nav-cart-badge {
+  position: static;
+  margin-left: 4px;
+}
+
