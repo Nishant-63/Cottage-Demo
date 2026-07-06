@@ -20,7 +20,7 @@ export default function FullMenu({ showToast }) {
       name:       item.name,
       desc:       item.desc || '',
       price:      item.price,
-      rawPrice:   item.rawPrice ?? parseFloat(String(item.price).replace(/[^\d.]/g, '')) || 0,
+      rawPrice:   item.rawPrice ?? (parseFloat(String(item.price).replace(/[^\d.]/g, '')) || 0),
       imgUrl,
       badgeLabel: badge.label,
       badgeStyle: badge.style,
