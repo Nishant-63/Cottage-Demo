@@ -16,13 +16,13 @@ function submitOrder(order) {
   }
 }
 
-export default function CartPage({ onBack, onOrderPlaced }) {
+export default function CartPage({ onBack, onOrderPlaced, tableNumber = '' }) {
   const { cart, dispatch, cartTotal } = useCart()
-  const [roomNumber, setRoomNumber] = useState('')
   const [guestName, setGuestName] = useState('')
   const [placing, setPlacing] = useState(false)
 
-  const canPlace = cart.length > 0 && roomNumber.trim() !== '' && !placing
+  const hasTable = tableNumber.trim() !== ''
+  const canPlace = cart.length > 0 && hasTable && !placing
 
   function handleQty(id, delta) {
     const item = cart.find(i => i.id === id)
@@ -46,7 +46,7 @@ export default function CartPage({ onBack, onOrderPlaced }) {
 
     const order = {
       orderId: `ORD-${Date.now()}`,
-      roomNumber: roomNumber.trim(),
+      tableNumber: tableNumber.trim(),
       guestName: guestName.trim(),
       items: cart.map(i => ({ ...i })),
       subtotal: cartTotal,
@@ -148,23 +148,28 @@ export default function CartPage({ onBack, onOrderPlaced }) {
 
             {/* ── ORDER FORM ── */}
             <form className="cart-order-form" onSubmit={handlePlaceOrder} noValidate>
-              <div className="cart-form-heading">Room Details</div>
+              <div className="cart-form-heading">Table Details</div>
 
-              <div className="form-group">
-                <label htmlFor="roomNumber">Room Number <span className="cart-required">*</span></label>
-                <input
-                  type="text"
-                  id="roomNumber"
-                  name="roomNumber"
-                  placeholder="e.g. 312"
-                  required
-                  value={roomNumber}
-                  onChange={e => setRoomNumber(e.target.value)}
-                  autoComplete="off"
-                />
-              </div>
+              {/* ── TABLE READ-ONLY DISPLAY ── */}
+              {hasTable ? (
+                <div className="cart-table-detected">
+                  <span className="cart-table-icon">📍</span>
+                  <div>
+                    <div className="cart-table-label">Your Table</div>
+                    <div className="cart-table-number">Table {tableNumber}</div>
+                  </div>
+                </div>
+              ) : (
+                <div className="cart-table-warning" role="alert">
+                  <span className="cart-table-warning-icon">⚠️</span>
+                  <div>
+                    <div className="cart-table-warning-title">Table not detected</div>
+                    <div className="cart-table-warning-msg">Please scan the QR code at your table to continue.</div>
+                  </div>
+                </div>
+              )}
 
-              <div className="form-group">
+              <div className="form-group" style={{ marginTop: 20 }}>
                 <label htmlFor="guestName">Guest Name <span className="cart-optional">(optional)</span></label>
                 <input
                   type="text"

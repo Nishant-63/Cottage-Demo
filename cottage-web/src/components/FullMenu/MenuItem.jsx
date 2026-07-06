@@ -1,3 +1,5 @@
+import { useState, useRef } from 'react'
+
 const EyeIcon = () => (
   <svg width="13" height="9" viewBox="0 0 13 9" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
@@ -18,7 +20,25 @@ const CartPlusIcon = () => (
   </svg>
 )
 
+const CheckIcon = () => (
+  <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M1 5l3.5 3.5L12 1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)
+
 export default function MenuItem({ name, desc, price, veg, isNew, imgUrl, onEyeClick, onAddToCart }) {
+  const [added, setAdded] = useState(false)
+  const timerRef = useRef(null)
+
+  function handleAddToCart(e) {
+    e.stopPropagation()
+    if (!onAddToCart) return
+    onAddToCart()
+    setAdded(true)
+    if (timerRef.current) clearTimeout(timerRef.current)
+    timerRef.current = setTimeout(() => setAdded(false), 1500)
+  }
+
   return (
     <div className="menu-item">
       {imgUrl && (
@@ -47,11 +67,11 @@ export default function MenuItem({ name, desc, price, veg, isNew, imgUrl, onEyeC
           <EyeIcon />
         </button>
         <button
-          className="dish-eye-btn menu-item-cart-btn"
-          aria-label={`Add ${name} to cart`}
-          onClick={(e) => { e.stopPropagation(); onAddToCart && onAddToCart() }}
+          className={`dish-eye-btn menu-item-cart-btn${added ? ' cart-btn-added' : ''}`}
+          aria-label={added ? `${name} added to cart` : `Add ${name} to cart`}
+          onClick={handleAddToCart}
         >
-          <CartPlusIcon />
+          {added ? <CheckIcon /> : <CartPlusIcon />}
         </button>
       </div>
     </div>
